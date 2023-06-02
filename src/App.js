@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { useContext } from "react";
+import { MainSpace, ImageSpace, FormSpace } from "./styles";
+import { Button } from "@mui/material";
+import Form from "./Form";
+import { CounterContext } from "./Context";
 
 function App() {
+  const counterData = useContext(CounterContext);
+  console.log(counterData);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MainSpace>
+      <ImageSpace />
+      <FormSpace>
+        <Form />
+        <div>
+          <Button onClick={() => counterData.resta()}> - </Button>
+          <Button onClick={() => counterData.suma()}> + </Button>
+        </div>
+      </FormSpace>
+    </MainSpace>
   );
 }
 
 export default App;
+
